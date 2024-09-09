@@ -1,1 +1,33 @@
+DATA HANDELING and DATA CLEANING
 
+To upload the data (csv) and store it in a variable
+
+```{data = read.csv("Salary.csv")}
+```
+
+knowing about the data
+
+```{r}
+dim(data)
+
+```
+
+```{r}
+summary(data)
+
+```
+
+```{r}
+head(data) #by default inital 6 rows
+head(data, 8) #set the no. of rows to be displayed from the top
+```
+
+changing the column names
+
+```{r}
+colnames(data)[1] = "NAME"
+colnames(data)[2:5]= c("JOB","AGENCYid","AGENCYNAME","HIREINGdate")
+
+colnames(data)
+
+```
