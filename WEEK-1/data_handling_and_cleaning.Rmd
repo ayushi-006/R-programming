@@ -7,9 +7,8 @@ To upload the data (csv) and store it in a variable
 
 knowing about the data
 
-```{r}
+```{undefined echo=TRUE}
 dim(data)
-
 ```
 
 ```{r}
