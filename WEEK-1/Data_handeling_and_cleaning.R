@@ -1,2 +1,3 @@
-data = read.csv("Salary.csv" , header= TRUE , sep = ",")
+data = read.csv("Salary.csv")
 
+summary(data)
