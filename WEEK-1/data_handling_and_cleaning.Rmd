@@ -1,32 +1,21 @@
 DATA HANDELING and DATA CLEANING
 
-To upload the data (csv) and store it in a variable
+**Functions:**
 
-```{data = read.csv("Salary.csv")}
-```
+colnames(data) –\> to list down the names of all columns
 
-knowing about the data
+is.nan(X) –\> gives boolean value of weather func is NAN or not.
 
-```{undefined echo=TRUE}
-dim(data)
-```
+is.infinite(X) –\> gives boolean value of weather func returns infinite value or not.
 
-```{r}
-summary(data)
+complete.cases –\> to select all the cases except NA and NANe.g. ``` subset(DF, complete.cases(DF)) /``na.omit(DF) ```
 
-```
+`median(Freedman$density)` –\> can't calc median because it has NA observation
 
-```{r}
-head(data) #by default inital 6 rows
-head(data, 8) #set the no. of rows to be displayed from the top
-```
+`median(Freedman$density , na.rm=T`) –\> compute the median of the density ignoring any NA values
 
-changing the column names
+`Freedman.good=na.omit(Freedman)` –\> gives the drastic treatment removes full row which have NA observation
 
-```{r}
-colnames(data)[1] = "NAME"
-colnames(data)[2:5]= c("JOB","AGENCYid","AGENCYNAME","HIREINGdate")
+\*\*carefully decide weather to use `na.omit` or not
 
-colnames(data)
-
-```
+`rbind.data.frame` –\> combine 2 or more dataframes by row

@@ -51,6 +51,78 @@ all(!is.na(data1))
 data1[is.na(data1)]=0
 sum(is.na(data1)) 
 
+#creating a Data Frame
+DF = data.frame(a=c(NA,1,3),b=c("one",NA,"two"))
+DF
+subset(DF,!is.na(a)) #will remove the row which has NA in "a"
+subset(DF,!is.na(b))#will remove the row which has NA in "b"
+
+#to remove all NA in the DATA FRAME
+subset(DF, complete.cases(DF))
+na.omit(DF)
+
+######
+
+library(car)
+head(Freedman) #freedman is a database
+summary(Freedman)
+dim(Freedman)
+str(Freedman)
+
+#calc the median
+median(Freedman$density) #because it has NA observation
+median(Freedman$density , na.rm=T) #removes NA values
+
+
+mean(Freedman$density) #because it has NA observation
+mean(Freedman$density , na.rm=T) #removes NA values
+#another way
+Freedman.good=na.omit(Freedman) #removes full row with NA value
+summary(Freedman.good)
+
+Freedman_notav = Freedman[!complete.cases(Freedman),] #display all the rows with NA values
+Freedman_notav
+
+########## replacing outliers with NA############
+
+library(UsingR)
+x=babies$dwt  #dwt is a row
+
+summary(x) 
+#handling the outliers
+x[x==999]=NA #assigning NA to all 999 values 
+
+range(x)
+summary(x)
+
+range(x , na.rm=T)
+
+############Removing non-unique values########
+head(data)
+data2 = data
+
+data3=rbind.data.frame(data2,data2[1:500,])
+dim(data3)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
