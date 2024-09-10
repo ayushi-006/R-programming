@@ -101,16 +101,66 @@ range(x , na.rm=T)
 head(data)
 data2 = data
 
-data3=rbind.data.frame(data2,data2[1:500,])
+data3=rbind.data.frame(data2,data2[1:500,]) #COMBINED THE FIRST 500 ROWS OF DATA2 AT THE END
 dim(data3)
 
+data4 = unique(data3) #removing the duplicates i.e. 500 rows
+dim(data4)  
+
+###################DATA HANDLING
+##selection of rows and columns 
+
+
+head(iris)
+iris[3]
+iris[,c(3,5)]
+iris[c(1:4) , c(2:5)]
 
 
 
+#########creation of new var
+iris$Petal.Ratio = iris$Petal.Length/iris$Petal.Width
+iris$Sepal.Ratio = iris$Sepal.Length/iris$Sepal.Width
+head(iris)
 
 
+######extracting observations
+
+iris[iris$Petal.Width>0.5 & iris$Species=='setosa'| iris$Species== "virginica",]
+
+########summarizing the content
+summarize(iris,
+          Petal.Length.mean = mean(Petal.Length),
+          Sepal.Length.mean = mean(Sepal.Length),
+          Petal.Length.sd = sd(Petal.Length),
+          Sepal.Length.sd = sd(Sepal.Length)
+)
 
 
+######### CREATE FULL DATA FRAME and ASSIGN ITS VALUES
+
+library(car)
+dim(Davis)
+head(Davis,5)
+
+output = data.frame(matrix(nrow=dim(Davis)[1] , ncol=dim(Davis)[2]))
+dim(output)
+head(output,5)
+colnames(output)
+
+colnames(output) = c("gender","wt","ht","repwt","repht")
+head(output,5)
+
+output$gender = Davis$sex
+output$wt = Davis$weight
+output$ht = Davis$height
+output$repwt = Davis$repwt
+output$repht = Davis$repht
+
+head(output)
+head(Davis)
+
+############WORKING WITH FACTOR VARIABLES
 
 
 
