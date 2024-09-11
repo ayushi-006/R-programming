@@ -162,6 +162,108 @@ head(Davis)
 
 ############WORKING WITH FACTOR VARIABLES
 
+library(UsingR)
+head(Cars93)
+dim(Cars93)
+
+d= Cars93[c(1:3),c(1:4)]
+d
+str(d)
+summary(d)
+#assigning NA values
+
+d[1,2]=NA
+d[3,3]=NA
+d
+
+d[3,c(2,4)]=list("A3",40)
+d
+class(d$Model) #gives the level 
+
+#dropping the level
+d$Model= droplevels(d$Model)
+levels(d$Model)
+
+#specifying the new levels
+levels(d$Model) = c(levels(d$Model), c("A3", "A4", "A6"))
+levels(d$Model)
+
+d[3,c(2,4)]=list("A3",40)
+d
+
+levels(d$Type)
+d$Type=droplevels(d$Type)
+
+
+levels(d$Type) = c(levels(d$Type), c("LARGE" , "SMALL", "CONVERTIBLE", "SLEAK"))
+
+d[3, c(3)]=list("CONVERTIBLE" )
+d
+
+### ADDING A NEW ROW
+
+d[4,] = list("Audi", "A6" , "LARGE" , "43.2")
+d
+#another way by using rbind
+d=rbind(d, list("Audi", "A4" , "SLEAK" , "41.2"))
+d
+
+### CREATING A NEW COLUMN
+
+d$Min.Price = as.numeric(d$Min.Price)
+d[,5]=d$Min.Price*1.3  
+#or
+d = within(d, {MODPRICE= Min.Price*1.3})
+d
+
+
+colnames(d)[5] = "MODPRICE"
+d
+
+##########TRANSFORMING DATAFRAMES ACROSS LONG AND WIDE FORMATS
+
+
+speed1 = c(23,45,65,35,55,78)
+speed2 = c(23,45,65,35,55,78)
+speed3 = c(23,45,65,35,55,78)
+speed4 = c(23,45,65,35,55,78)
+speed5 = c(23,45,65,35,55,78)
+id = c(1,2,3,4,5,6)
+max= c(90,80,89,78,120,130)
+
+speed = cbind.data.frame(id,speed1,speed2,speed3,speed4,speed5,max)
+
+head(speed)
+summary(speed)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
