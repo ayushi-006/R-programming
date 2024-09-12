@@ -95,10 +95,14 @@ get the histogram done
 
 `var= sample(50:100 , 10000, replace =T)`
 
-`par(mfrow=c(1,3))`
+`par(mfrow=c(1,3))` used to plot graphs side by side
 
 `hist(var,main= "var_100" ,xlab = "Frequency " , ylab = "variable ", col=rainbow(20) , border="green" , breaks=100)`
 
 `hist(var, main= "var_10", xlab = "Frequency " , ylab = "variable ", col=rainbow(20) , border="green" , breaks=10)`
 
 `hist(var,main= "var_1",xlab = "Frequency " , ylab = "variable ", col=rainbow(20) , border="green" , breaks=1)`![](images/Rplot03.png)
+
+`par(new=T)` \# allows you to add a new plot on top of the existing one
+
+`par(mar=c(5,5,5,5)+1)` setting the margins

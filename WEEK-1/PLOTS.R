@@ -99,10 +99,55 @@ par(mfrow=c(1,1))
   m= hist(var , xlab="Frequency" , ylab = "variable ", col=rainbow(20) , border="green" ,  breaks=10)
   text(m$mids , m$counts , lables =m$counts , adj =c(0.5,-0.5))
   
+  
+  #setting the margin
+  par(mar=c(5,5,5,5)+1)
+  m= hist(var , xlab="Frequency" , ylab = "variable ", col=rainbow(20) , border="green" ,  breaks=10, main="Histogram")  
+ 
+  par(new=T)  # allows you to add a new plot on top of the existing one
+  plot(density(var) , lwd=4 , col="black" , xlab="" , ylab="" , axes=F ,main="") 
+  
+  axis(4, col="black" , col.axis="black")
+  
+  mtext("Cell Density", side =4 ,col="black" , line=4)
 
 
+#stacked bar plot
+#side by side/ grouped and stacked
+
+Meal <- read_excel("Meal.xlsx")
+View(Meal)
+
+head(Meal)
 
 
+####grouped/stacked chart
 
+barplot(as.matrix(Meal[c(1:3),c(2:6)]),col=rainbow(3),border="white",xlab="Price" , ylab="Number_of_Rest")
 
+legend("topleft" , Meal$`Quality Rating`[1:3] , cex=0.5,fill=rainbow(3))
+  
 
+barplot(as.matrix(Meal[c(1:3),c(2:6)]),col=rainbow(3),border="white",xlab="Price" , ylab="Number_of_Rest", beside= T)
+
+legend("topleft" , Meal$`Quality Rating`[1:3] , cex=0.5,fill=rainbow(3))
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
