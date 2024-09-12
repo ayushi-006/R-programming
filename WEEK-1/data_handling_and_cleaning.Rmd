@@ -64,8 +64,8 @@ STEP4 : Add the levels in the same column
 
 ADDING A NEW ROWS
 
-1.   Manually
-2.   Using `rbind` \> `d=rbind(d, list("Audi", "A4" , "SLEAK" , "41.2"))`
+1.  Manually
+2.  Using `rbind` \> `d=rbind(d, list("Audi", "A4" , "SLEAK" , "41.2"))`
 
 CREATING A NEW COLUMN
 
@@ -80,3 +80,7 @@ CHANGING THE DATA TYPE
 3.  **To Date**: `as.Date()`
 4.  **To Logical**: `as.logical()`
 5.  **To Integer**: `as.integer()`
+
+DATA VISUALIZATION
+
+![](images/clipboard-4113577601.png){width="458"}
