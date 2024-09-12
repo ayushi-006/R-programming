@@ -83,4 +83,22 @@ CHANGING THE DATA TYPE
 
 DATA VISUALIZATION
 
-![](images/clipboard-4113577601.png){width="458"}
+![BAR plot](images/Rplot.png){width="500"}
+
+We can compare two graphs together by : `mfrow` command i.e. **"multiple figures by row"** which is used inside the `par()` function.
+
+> par(mfrow=c(2,1))
+
+![](images/Rplot01.png){width="500"}
+
+get the histogram done
+
+`var= sample(50:100 , 10000, replace =T)`
+
+`par(mfrow=c(1,3))`
+
+`hist(var,main= "var_100" ,xlab = "Frequency " , ylab = "variable ", col=rainbow(20) , border="green" , breaks=100)`
+
+`hist(var, main= "var_10", xlab = "Frequency " , ylab = "variable ", col=rainbow(20) , border="green" , breaks=10)`
+
+`hist(var,main= "var_1",xlab = "Frequency " , ylab = "variable ", col=rainbow(20) , border="green" , breaks=1)`![](images/Rplot03.png)
