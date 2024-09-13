@@ -238,30 +238,99 @@ summary(speed)
 
 
 
+#####################PORTFOLIO ANALYTICS
+
+#Load the required libraries
 
 
 
+library(PortfolioAnalytics)
+library(tidyverse)
+library(patchwork)
+
+Assets_Price_xts = readRDS("~/R-programming/datasets/Assets_Price_xts.rds")
+
+class(Assets_Price_xts)
+head(Assets_Price_xts)
+summary(Assets_Price_xts)
+ str(Assets_Price_xts)
+dim(Assets_Price_xts)
+glimpse(Assets_Price_xts)
+ 
+
+Assets_Return_xts <- readRDS("~/R-programming/datasets/Assets_Return_xts.rds")
+
+class(Assets_Return_xts)
+head(Assets_Return_xts)
+summary(Assets_Return_xts)
+str(Assets_Return_xts)
+dim(Assets_Return_xts)
+glimpse(Assets_Return_xts)
+
+
+######Visualize with S&P 500 movement
+#Regression visualization
+
+p1= ggplot(Assets_Price_xts, aes(x=SnP500, y=Bit))+ #the main plotting function , Aesthetics (aes) 
+  geom_point(col="red")+geom_smooth(col="blue" , method="lm")+ # Geometries (geom)
+  labs(title = "Bitcoin vs S&P500" , y="Bitcoin" , x="S&P500")
+
+#geom_point() is a function in ggplot2 that adds a scatter plot layer
+
+p2= ggplot(Assets_Price_xts, aes(x=SnP500, y=ESG_Fund))+ #initializing the plot
+  geom_point(col="red")+geom_smooth(col="blue" , method="lm")+ #adding layers 
+  labs(title = "ESG_Fund vs S&P500" , y="ESG_Fund" , x="S&P500")
+
+
+p3= ggplot(Assets_Price_xts, aes(x=SnP500, y=EUA_Futures))+
+  geom_point(col="red")+geom_smooth(col="blue" , method="lm")+
+  labs(title = "EUA_Futures vs S&P500" , y="EUA_Futures" , x="S&P500")
+
+p1+p2+p3
 
 
 
+#######DATA VISUALIZATION
+###Density plot examination
+
+p1=ggplot(Assets_Price_xts , aes(x=Bit , color = factor(Year), fill=factor(Year)))+
+ geom_density(linewidth=1 , alpha= 0.5)+
+ labs(title="Bitcoin" , y="" , x="" ,col="Year" , fill="Year")
+
+p2=ggplot(Assets_Price_xts , aes(x=EUA_Futures , color = factor(Year), fill=factor(Year)))+
+  geom_density(linewidth=1 , alpha= 0.5)+
+  labs(title="EUA_Futures" , y="" , x="" ,col="Year" , fill="Year")
+
+p3=ggplot(Assets_Price_xts , aes(x=ESG_Fund , color = factor(Year), fill=factor(Year)))+
+  geom_density(linewidth=1 , alpha= 0.5)+
+  labs(title="ESG_Fund" , y="" , x="" ,col="Year" , fill="Year")
 
 
+p4=ggplot(Assets_Price_xts , aes(x=SnP500, color = factor(Year), fill=factor(Year)))+
+  geom_density(linewidth=1 , alpha= 0.5)+
+  labs(title="SnP500" , y="" , x="" ,col="Year" , fill="Year")
+
+p1+p2+p3+p4
+
+#plotting the type of graph we want is done by, geom_<type of graph>
+
+####BOX PLOTS
+p1=ggplot(Assets_Price_xts, aes(y=EUA_Futures , fill=factor(Year)))+
+ geom_boxplot()+labs(fill="Year" , title="EUA Futures" , y="")
+
+p2=ggplot(Assets_Price_xts, aes(y=SnP500 , fill=factor(Year)))+
+  geom_boxplot()+labs(fill="Year" , title="SnP 500" , y="")
+
+p3=ggplot(Assets_Price_xts, aes(y=ESG_Fund , fill=factor(Year)))+
+  geom_boxplot()+labs(fill="Year" , title="ESG Fund" , y="")
+
+p4=ggplot(Assets_Price_xts, aes(y=Bit , fill=factor(Year)))+
+  geom_boxplot()+labs(fill="Year" , title="Bitcoin" , y="")
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+p1+p2+p3+p4+plot_annotation(title="Box Plot Yearwise",
+                            theme=theme(plot.title = element_text(hjust=0.5,
+                                                                  size=20,face="bold")))
 
 
 

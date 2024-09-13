@@ -106,3 +106,19 @@ get the histogram done
 `par(new=T)` \# allows you to add a new plot on top of the existing one
 
 `par(mar=c(5,5,5,5)+1)` setting the margins
+
+PORTFOLIO ANALYTICS
+
+`zoo` object –\> maintain flexibility in how data is stored and accessed, making them ideal for working with financial, scientific, or other time-indexed data.
+
+`xts` object (eXtensible Time Series) extension of the zoo class, specifically designed for time series data.
+
+![](images/Rplot4-01.png)
+
+plotting the type of graph we want is done by, geom\_\<type of graph\>
+
+BOXPLOT
+
+![](images/Rplot5-02.png)
+
+[images/Rplot5-01.png](images/Rplot5-01.png)
